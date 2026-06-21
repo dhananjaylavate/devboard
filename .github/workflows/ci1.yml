@@ -1,7 +1,7 @@
 # Goal -- I have to lint the code, build and test for Frontend and Backend
 # Then push the image to Docker
 
-name: CI
+name: CI2
 
 on:
   push:
