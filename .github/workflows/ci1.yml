@@ -8,7 +8,7 @@ on:
       branches:[advanced]
 
 jobs:
-
+# Job 1 - lint the code, build and test for Frontend
   frontend:
     runs-on: ubuntu:latest
 
@@ -44,7 +44,7 @@ jobs:
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/devboard/frontend:latest
 
-
+# Job 2 - lint the code, build and test for Backend
     backend:
         # Github runner
         runs-on: ubuntu-latest
