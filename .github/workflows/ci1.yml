@@ -5,7 +5,7 @@ name: CI2
 
 on:
   push:
-      branches:[advanced]
+      branches: [advanced]
 
 jobs:
 # Job 1 - lint the code, build and test for Frontend
@@ -48,6 +48,7 @@ jobs:
     backend:
         # Github runner
         runs-on: ubuntu-latest
+
         steps:
             - name: Checkout Code
               uses: actions/checkout@v7
