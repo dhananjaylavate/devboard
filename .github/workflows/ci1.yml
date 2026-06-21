@@ -37,7 +37,7 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Docker Bild and Push
+      - name: Docker Build and Push
         uses: docker/build-push-action@v7
         with:
           context: ./frontend
