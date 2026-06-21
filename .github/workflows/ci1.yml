@@ -45,7 +45,7 @@ jobs:
           tags: ${{ vars.DOCKERHUB_USERNAME }}/devboard/frontend:latest
 
 # Job 2 - lint the code, build and test for Backend
-    backend:
+  backend:
         # Github runner
         runs-on: ubuntu-latest
 
