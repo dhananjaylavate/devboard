@@ -11,7 +11,6 @@ jobs:
 # Job 1 - lint the code, build and test for Frontend
   frontend:
     runs-on: ubuntu:latest
-
     steps:
       - name: Checkout the code
         uses: actions/checkout@v7
