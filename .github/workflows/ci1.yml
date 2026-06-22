@@ -41,7 +41,7 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/devboard/frontend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/devboard-frontend:latest
 
   backend:
     runs-on: ubuntu-latest
