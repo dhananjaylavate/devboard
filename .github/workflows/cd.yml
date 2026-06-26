@@ -1,0 +1,30 @@
+# Goal -- Deploy the devboard application using githubactions and runners
+
+name: CD
+
+on: 
+  workflow_call
+
+jobs:
+  deploy:
+      runs-on: self-hosted
+      steps:
+        - name: code Checkout
+          uses: githubactions/checkout@v7
+
+        - name: Copy Examples into main env
+          run: cp .env.example .env
+
+        - name: Docker Login
+          uses: docker/login-action@v4
+          with:
+            registry: docker.io
+            username: $ {{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
+        - name: Deploy the containers using docker compose
+          run: |
+            docker compose pull
+            docker compose up -d
+
+

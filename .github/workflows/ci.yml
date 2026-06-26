@@ -1,7 +1,7 @@
 # Goal -- I have to lint the code, build and test for Frontend and Backend
 # Then push the image to Docker
 
-name: CI1
+name: CI
 
 on:
   push:
@@ -80,4 +80,10 @@ jobs:
           context: ./backend
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/devboard-backend:latest
+
+  deploy:
+      needs: [frontend,backend]
+      uses: ./.github/workflows/cd.yml
+      secrets: inherit
+
 
