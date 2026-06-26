@@ -10,7 +10,7 @@ jobs:
       runs-on: self-hosted
       steps:
         - name: code Checkout
-          uses: githubactions/checkout@v7
+          uses: actions/checkout@v7
 
         - name: Copy Examples into main env
           run: cp .env.example .env
