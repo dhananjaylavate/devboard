@@ -25,6 +25,6 @@ jobs:
         - name: Deploy the containers using docker compose
           run: |
             docker compose pull
-            docker compose up -d
+            docker compose up -d --no-deps --build frontend backend
 
 
