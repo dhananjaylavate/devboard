@@ -4,22 +4,30 @@ name: Sonar Qube Scan
 
 on:
     workflow_call:
+        secrets:
+            SONAR_TOKEN:
+                required: false
+            SONAR_HOST_URL:
+                required: false
 
 jobs:
     sonar-scanner:
         runs-on: ubuntu-latest
+        env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         steps:
             - name: Code Checkout
               uses: actions/checkout@v7
 
             - name: Skip SonarQube scan when secrets are missing
-              if: ${{ secrets.SONAR_TOKEN == '' || secrets.SONAR_HOST_URL == '' }}
+              if: ${{ env.SONAR_TOKEN == '' || env.SONAR_HOST_URL == '' }}
               run: |
                 echo "Skipping SonarQube scan because SONAR_TOKEN or SONAR_HOST_URL is not configured."
 
             - name: SonarQube Scan
-              if: ${{ secrets.SONAR_TOKEN != '' && secrets.SONAR_HOST_URL != '' }}
+              if: ${{ env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != '' }}
               uses: SonarSource/sonarqube-scan-action@v8.2.0
               env:
-                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-                SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+                SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
+                SONAR_HOST_URL: ${{ env.SONAR_HOST_URL }}
